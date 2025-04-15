@@ -226,7 +226,7 @@ get '/sessions/current/?' do
   status 200
   {
     links: {
-      self: rewrite_url.chomp('/') + '/current'
+      self: rewrite_url.chomp('/')
     },
     data: {
       type: 'sessions',
