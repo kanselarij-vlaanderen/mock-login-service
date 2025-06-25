@@ -7,7 +7,7 @@ Add the following snippet to your `docker-compose.yml`:
 
 ```
 mock-login:
-  image: kanselarij-vlaanderen/mock-login-service:2.2.0
+  image: kanselarij-vlaanderen/mock-login-service:2.4.0
 ```
 
 Add rules to the `dispatcher.ex` to dispatch requests to the mock-login service:
