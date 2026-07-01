@@ -122,30 +122,5 @@ module LoginService
       } LIMIT 1)
       Mu::AuthSudo.query(query)
     end
-
-    def select_membership(user)
-      query =  " SELECT ?membership ?membership_id ?status WHERE {"
-      query += "   GRAPH <#{MOCK_ACCOUNT_GRAPH}> {"
-      query += "     ?membership <#{ORG.member}> <#{user}> ; "
-      query += "          <#{MU_CORE.uuid}> ?membership_id ."
-      query += "   }"
-      query += "   GRAPH <#{SYSTEM_USERS_GRAPH}> {"
-      query += "     ?membership <#{ADMS.status}> ?status ."
-      query += "   }"
-      query += " } LIMIT 1"
-      Mu::AuthSudo.query(query)
-    end
-
-    def select_organization(membership)
-      query =  " SELECT ?status WHERE {"
-      query += "   GRAPH <#{MOCK_ACCOUNT_GRAPH}> {"
-      query += "     <#{membership}> <#{ORG.organization}> ?organization ."
-      query += "   }"
-      query += "   GRAPH <#{SYSTEM_USERS_GRAPH}> {"
-      query += "     ?organization <#{ADMS.status}> ?status ."
-      query += "   }"
-      query += " } LIMIT 1"
-      Mu::AuthSudo.query(query)
-    end
   end
 end
